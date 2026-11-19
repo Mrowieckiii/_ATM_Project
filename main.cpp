@@ -31,7 +31,8 @@ int main() {
             cout << "1.Sprawdz stan konta"<<endl;
             cout << "2.Wplać pieniądze"<<endl;
             cout << "3.Wypłać pieniądze"<<endl;
-            cout << "4.Wyjdź"<<endl;
+            cout << "4.Zmiana Pinu"<<endl;
+            cout << "5.Wyjdź"<<endl;
             cin >> wybor;
 
             switch (wybor) {
@@ -68,6 +69,30 @@ int main() {
                     break;
                 }
                 case 4:
+                    int Apin;
+                    cout << "Podaj Aktualny pin: " << endl;
+                    cin >> Apin;
+                    if (Apin != Ppin) {
+                        iloscProb = iloscProb -1;
+                        cout<<"Nie poprawny pin!! , Pozostalo  " <<  iloscProb << endl;
+                    }else {
+                        int NewPin;
+                        int NewPin2;
+                        cout << "Jaki Ma być nowy pin: "<< endl;
+                        cin >> NewPin;
+                        cout << "Powtórz nowy pin: " << endl;
+                        cin >> NewPin2;
+                        if (NewPin2 != NewPin) {
+                            cout << "Ten pin nie pasuje do nadanego pini!! " << endl;
+
+                        }else {
+                            cout << "Udało się zmienić pin !!"<<endl;
+                            NewPin2 = Ppin;
+                        }
+                    }
+                    break;
+
+                case 5:
                     return 0;
                 default:
                     cout<< "Zły numer !! \nzakres (1-4) proszę wybrać ponownie z zakresu !"<<endl;
