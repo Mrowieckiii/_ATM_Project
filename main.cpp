@@ -25,6 +25,7 @@ int main() {
                 }
             }
         }
+        iloscProb = 3;
         cout<<" Pin poprawny witamy!!"<<endl;
         while (true) {
             cout << "---Wirtualny Bankomat---"<<endl;
@@ -68,34 +69,43 @@ int main() {
                     }
                     break;
                 }
-                case 4:
+                case 4: {
                     int Apin;
                     cout << "Podaj Aktualny pin: " << endl;
                     cin >> Apin;
                     if (Apin != Ppin) {
                         iloscProb = iloscProb -1;
+                        if (iloscProb == 0) {
+                            cout << "Przekroczono ilosc prób wpisania pinu !!!! Niepowodzenie!!" << endl;
+                            return 0;
+                        }
                         cout<<"Nie poprawny pin!! , Pozostalo  " <<  iloscProb << endl;
                     }else {
+                        iloscProb = 3;
                         int NewPin;
                         int NewPin2;
                         cout << "Jaki Ma być nowy pin: "<< endl;
                         cin >> NewPin;
                         cout << "Powtórz nowy pin: " << endl;
                         cin >> NewPin2;
-                        if (NewPin2 != NewPin) {
+                        if (NewPin2 == Ppin) {
+                            cout << "Uzyto tego samego pinu!!! ustaw inny pin niz podstawowy!!"<<endl;
+                        }
+                        else if (NewPin2 != NewPin) {
                             cout << "Ten pin nie pasuje do nadanego pini!! " << endl;
 
                         }else {
+
                             cout << "Udało się zmienić pin !!"<<endl;
-                            NewPin2 = Ppin;
+                            Ppin = NewPin2;
                         }
                     }
                     break;
-
+                }
                 case 5:
                     return 0;
                 default:
-                    cout<< "Zły numer !! \nzakres (1-4) proszę wybrać ponownie z zakresu !"<<endl;
+                    cout<< "Zły numer !! \nzakres (1-5) proszę wybrać ponownie z zakresu !"<<endl;
 
 
             }
